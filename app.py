@@ -1,9 +1,12 @@
+import io
 from flask import Flask, render_template,request,jsonify
 from flask_cors import CORS
 from datetime import date
 from flask_mysqldb import MySQL
 import qrcode
 import random
+from PIL import Image
+import base64
 
 app = Flask(__name__)
 
@@ -21,7 +24,7 @@ CORS(app, resources={r"/*":{'origins':"*"}})
 
 @app.route('/')
 def index():
-    return render_template('form.html')
+    return render_template('index.html')
 
 @app.route('/create_card', methods=['POST'])
 def create_card():
@@ -67,17 +70,25 @@ def create_card():
         cur.close()
     
         qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        url='http://127.0.0.1:5000/getUser/'+str(key)
+        url = 'http://127.0.0.1:5000/getUser/' + str(key)
         qr.add_data(url)
         qr.make(fit=True)
         qr_img = qr.make_image(fill_color="black", back_color="white")
 
-        # Save QR code image to a file
-        qr_img_path = 'static/qr_code.png'
-        qr_img.save(qr_img_path)
+        # Convert the QR code image to a byte stream
+        img_byte_stream = io.BytesIO()
+        qr_img.save(img_byte_stream, format='PNG')
+        img_byte_stream.seek(0)
 
-        # Render the template with the QR code image path
-        return render_template('card.html', qr_code=qr_img_path,key=key)   
+        # Encode the byte stream as base64
+        qr_code_base64 = base64.b64encode(img_byte_stream.read()).decode('utf-8')
+
+        # Render the template with the QR code base64 data
+        return render_template('card.html', qr_code=qr_code_base64, key=key)
+    
+    except Exception as e:
+        print('Error registering user:', e)
+        return jsonify([]) 
     
     except Exception as e:
         print('Error registering user:', e)
