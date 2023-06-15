@@ -4,3 +4,4 @@ flask_mysqldb==1.0.1
 datetime==4.3
 gunicorn
 Pillow
+qrcode
