@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Template with QR Code</title>
+  <style>
+    .card {
+      width: 500px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .qr-code {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .qr-code img {
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h2>Travel Kart</h2>
+    <p>{{key}}</p>
+    <div class="qr-code">
+        <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      var card = document.querySelector('.card');
+      html2canvas(card).then(function(canvas) {
+        var link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = 'card.png';
+        link.click();
+      });
+    });
+  </script>
+</body>
+</html>
