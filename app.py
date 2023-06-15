@@ -70,7 +70,7 @@ def create_card():
         cur.close()
     
         qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        url = 'http://127.0.0.1:5000/getUser/' + str(key)
+        url = 'https://one-card-server.onrender.com/getUser/' + str(key)
         qr.add_data(url)
         qr.make(fit=True)
         qr_img = qr.make_image(fill_color="black", back_color="white")
