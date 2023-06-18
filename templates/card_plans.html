@@ -201,6 +201,10 @@
         console.log(data);  // Handle the response data from Flask
         if (data === 'success') {
           toastr.success('topped up successfully');  // Show success toast notification
+          setTimeout(function() {
+            // Redirect to the desired page after a delay
+            window.location.href = "/getUser/{{card_id}}";
+          }, 3000); 
         } else {
           toastr.error('Insufficient funds');  // Show error toast notification
         }
