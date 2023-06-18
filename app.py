@@ -133,7 +133,7 @@ def create_card():
 def get_card(card_id):
     try:
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM users INNER JOIN selectedPlan ON users.secret = selectedPlan.card_id WHERE selectedPlan.id = ( SELECT MAX(id FROM selectedPlan WHERE selectedPlan.card_id = users.secret) AND users.secret = %s", (card_id,))
+        cur.execute("SELECT * FROM users where secret = %s", (card_id,))
         card = cur.fetchone()
         cur.close()
         if card:
