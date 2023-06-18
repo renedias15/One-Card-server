@@ -37,7 +37,7 @@ def admiin_login():
 
 @app.route('/instructions')
 def instructions():
-    return render_template('instructions.html')
+    return render_template('Instructions.html')
 
 @app.route('/register')
 def register():
