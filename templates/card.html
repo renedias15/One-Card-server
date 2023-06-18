@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+  <style>
+    .card {
+      height:250px;
+      width: 450px;
+      background-image: url('../static/images/card_bg.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding-left: 20px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top: 5%;
+      font-family:Verdana;
+    }
+    
+    .card h3 {
+      margin-top: 0;
+      color: red;
+      font-size: 25px;
+      font-family: 'Montserrat', sans-serif;
+      z-index:999;
+      line-height: 1.8;
+    }
+    
+    .card p {
+      margin-top:7%;
+      color:crimson;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 4px;
+      line-height: 0.8;
+      font-size:25px
+    }
+    .gradient-custom {
+            /* fallback for old browsers */
+            background: #6a11cb;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+        }
+        .qr-code {
+          position: absolute;
+          bottom: 3px;
+          right: 3px;
+        }
+        
+        .qr-code img {
+          width: 80px;
+          height: 80px;
+        }
+  </style>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+ 
+</head>
+<body class="gradient-custom">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="../static/images/logo.png" alt="Logo" height="50" width="90" style="margin-left: 30px;"></a>
+    <!-- <div style="margin-left:50%;  "> 
+      <form action="admin_new.html">
+        <button type="submit" class="button">Admin</button>
+      </form>
+    </div> -->
+    <a href="/">Home</a>
+    <a href="/">About</a>
+    <a href="/admin_login">Admin</a>
+    <a href="/instructions">Instructions</a>
+    <a href="/">Contact</a>
+  </nav>
+  <div class="card">
+    <h3 class="font-weight-bold">One Card</h3></br>
+    <p id="formattedNumber" class="text-center text-monospace font-weight-bold"></p>
+    <div class="qr-code">
+      <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+  </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      var card = document.querySelector('.card');
+      html2canvas(card).then(function(canvas) {
+        var link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = 'card.png';
+        link.click();
+      });
+    });
+    var number = {{key}};
+    var numberString = number.toString();
+    var formattedNumber = numberString.replace(/(.{4})/g, '$1 ');
+    document.getElementById("formattedNumber").textContent = formattedNumber;
+  </script>
+</body>
+</html>

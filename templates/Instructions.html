@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Card - Public Transportation Card</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    .gradient-custom {
+      /* fallback for old browsers */
+      background: #6a11cb;
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    }
+
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      transition: color 0.3s;
+    }
+
+    .card-title:hover {
+      color: #ff6600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#"><img src="../static/images/logo.png" alt="Logo" height="100" width="90" style="margin-left: 30px;"></a>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="/admin_login">Admin</a>
+  <a href="/instructions">Instructions</a>
+  <a href="/contact">Contact</a>
+</nav>
+<body class="vh-100 gradient-custom">
+  <div class="container mt-2">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">One Card ("One Card") – Public Transportation Card</h1>
+        <p class="card-text">One Card ("One Card"), the payment method used in the public transportation system, allows for quick and safe payment in urban transportation. It also provides various uses in many locations such as parking areas, taxis, metro, bus and restrooms. Passengers can use the One Card or Limited Use Tickets for payment when accessing specific services.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">1 – How Can I Obtain a One Card?</h1>
+        <p class="card-text">You can obtain your Anonymous One Card from designated representatives or register online with your details.</p>
+        <p class="card-text">For more information on One Card Purchasing and Recharging Centers, please visit: <a href="#">[Link]</a></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">2 – How Much Does One Card Cost?</h1>
+        <p class="card-text">The price of an Anonymous One Card is 100 Indian Rupees.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">3 – How Can I Add Money to the Balance of My One Card?</h1>
+        <p class="card-text">You can add money to the balance of your One Card by scanning the QR code of your card and then clicking on the top-up button on the website or the One Card Mobile Application.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">4 – How Do I Use My One Card?</h1>
+        <p class="card-text">You can use your One Card in all member businesses and corporations with One Card Electronic Toll Collection System integration. It is as easy as placing your card on the card readers found on cashier's desks of member businesses or on the turnstiles/validator devices found on public transportation vehicles. The device will process the payment and provide confirmation.</p>
+        <p class="card-text">If your balance is insufficient or if there is an issue with your card, the device will notify you. You will not be charged more than once for the same transaction. Please ensure to scan your card for each payment.</p>
+        <p class="card-text">You can check your payment amount and remaining balance on the screen of the card reader.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">New Features and Areas of Application for One Card</h1>
+        <ul class="card-text">
+          <li>You can now add money to your One Card, view your current balance, and make payments via the QR Code of your digital account using the One Card mobile app.</li>
+          <li>You can create a payment order or apply for a subscription for One Card using accepted bank cards.</li>
+          <li>The mobile app allows you to easily review the details of past transactions.</li>
+          <li>In selected areas, you can pay using the QR Code on the app, thanks to the read-and-pass feature currently being tested.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+</body>
+</html>
