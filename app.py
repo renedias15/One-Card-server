@@ -237,7 +237,7 @@ def register_plan(card_id,plan_id,validity_days):
     expiry_date = date.today() + timedelta(days=validity_days)
     
     cur = mysql.connection.cursor()
-    query="insert into selectedPlan (card_id,plan_id,purchase_date,expiry_date,deleted) VALUES (%s,%s,%s,%s)"
+    query="insert into selectedPlan (card_id,plan_id,purchase_date,expiry_date,deleted) VALUES (%s,%s,%s,%s,%s)"
     cur.execute(query, (card_id,plan_id,today,expiry_date,0))
     mysql.connection.commit()
     
