@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Page</title>
+</head>
+<body>
+  <h1>Card Page</h1>
+  
+  <button id="show-details">Show Card Details</button>
+  <button id="top-up">Top Up Card</button>
+  
+  <script>
+    // Add event listeners to the buttons
+    document.getElementById("show-details").addEventListener("click", showCardDetails);
+    document.getElementById("top-up").addEventListener("click", topUpCard);
+    
+    // Function to handle the "Show Card Details" button click
+    function showCardDetails() {
+        const url = '/card-details/{{id}}'
+        window.location.href = url;
+    }
+    
+    // Function to handle the "Top Up Card" button click
+    function topUpCard() {
+        const url = '/top-up/{{id}}'
+        window.location.href = url;
+    }
+  </script>
+</body>
+</html>

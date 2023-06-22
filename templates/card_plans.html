@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <style>
+    .card {
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: rgb(255, 255, 255);
+      color: white;
+      background-image: url(../static/images/triangle-pattern-generator.jpg);
+    }
+    .card-body {
+      text-align: center;
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-text {
+      margin-bottom: 15px;
+    }
+    .btn {
+      width: 100%;
+      color: lightgreen;
+    }
+    .container {
+      margin-top: 30px;
+     
+    }
+    .btn custom{
+        color: lightgreen;
+    }
+    .btn-custom {
+        background-color: rgb(61, 233, 38);
+      color: white;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover {
+      
+      background-color: rgb(46, 221, 119);
+    }
+
+    .gradient-custom {
+            /* fallback for old browsers */
+            background: #6a11cb;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+        }
+
+        .navbar-brand img {
+      height: 30px;
+      margin-right: 10px;
+    }
+    
+    .navbar input[type="text"] {
+      padding: 6px 10px;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+    
+    .navbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .navbar {
+      background-color: #333;
+      transition: background-color 0.3s ease;
+    }
+    
+    .navbar a:hover {
+      background-color: #6d6b66;
+    }
+  </style>
+</head>
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#"><img src="../static/images/logo.png" alt="Logo" height="50" width="90" style="margin-left: 30px;"></a>
+  <!-- <div style="margin-left:50%;  "> 
+    <form action="admin_new.html">
+      <button type="submit" class="button">Admin</button>
+    </form>
+  </div> -->
+  <a href="/">Home</a>
+  <a href="/about_us">About</a>
+  <a href="/admin_login">Admin</a>
+  <a href="/instructions">Instructions</a>
+  <a href="/contact_us">Contact</a>
+</nav>
+<body class="gradient-custom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card 1</h5>
+            <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Cost: Rs 100</p>
+            <p class="card-text">Validity: 15 days</p>
+            <p class="card-text">Credits: 100</p>
+            <button class="btn btn-custom" onclick="buy(1,15)">Buy</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card 2</h5>
+            <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Cost: Rs 200</p>
+            <p class="card-text">Validity: 30 days</p>
+            <p class="card-text">Credits: 200</p>
+            <button class="btn btn-custom" onclick="buy(2,30)">Buy</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card 3</h5>
+            <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Cost: Rs 300</p>
+            <p class="card-text">Validity: 90 days</p>
+            <p class="card-text">Credits: 400</p>
+            <button class="btn btn-custom" onclick="buy(3,90)">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card 4</h5>
+            <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Cost: Rs 500</p>
+            <p class="card-text">Validity: 90 days</p>
+            <p class="card-text">Credits: 800</p>
+            <button class="btn btn-custom" onclick="buy(4,90)">Buy</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card 5</h5>
+            <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Cost: Rs 200</p>
+            <p class="card-text">Validity: 1 day</p>
+            <p class="card-text">Credits: unlimited</p>
+            <button class="btn btn-custom" onclick="buy(5,1)">Buy</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card 6</h5>
+            <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Cost: Rs 1000</p>
+            <p class="card-text">Validity: 60 days</p>
+            <p class="card-text">Credits: Unlimited</p>
+            <button class="btn btn-custom" onclick="buy(6,60)">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function initializeToastr() {
+      toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        preventDuplicates: true,
+        positionClass: 'toast-top-right',
+        timeOut: 3000  // Duration of the toast notification
+      };
+    }
+    function buy(plan_id,days){
+      cardId={{card_id}}
+      fetch(`/api/plans/${cardId}/${plan_id}/${days}`, {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);  // Handle the response data from Flask
+        if (data === 'success') {
+          toastr.success('topped up successfully');  // Show success toast notification
+          setTimeout(function() {
+            // Redirect to the desired page after a delay
+            window.location.href = "/getUser/{{card_id}}";
+          }, 3000); 
+        } else {
+          toastr.error('Insufficient funds');  // Show error toast notification
+        }
+      })
+      .catch(error => {
+        console.log('Error:', error);
+        toastr.error('An error occurred');
+      });
+    }
+    $(document).ready(function() {
+      initializeToastr();
+    });
+  </script>
+
+</body>
+</html>
