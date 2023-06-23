@@ -1,138 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <link rel="icon" type="image/x-icon" href="../static/images/logo.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="../static/images/logo.png">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
-    <style>
-        .gradient-custom {
-            /* fallback for old browsers */
-            background: #6a11cb;
+  <style>
+    .card {
+      height: 220px;
+      width: 440px;
+      /*background-image: url('../static/images/card_bg.jpg');*/
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(255, 0, 0, 0.1);
+      padding-left: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5%;
+      font-family: Verdana;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #242424;
+    }
+    
+    .card h3 {
+      margin: 0;
+      position: absolute;
+      top: 5px;
+      left: 20px;
+      color: rgb(183, 0, 255);
+      font-size: 40px;
+      font-family: 'Montserrat', sans-serif;
+      z-index: 999;
+      line-height: 1.8;
+    }
+    
+    .card p {
+      margin: 0;
+      color: rgb(238, 255, 0);
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 4px;
+      line-height: 0.8;
+      font-size: 25px;
+    }
 
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
-        }
-        .card{
-            width: 400px;
-            height: 600px;
-           
-        }
-    </style>
-     <script>
-        function validateForm() {
-          var name = document.getElementById("typeNameX").value; 
-          var email = document.getElementById("typeEmailX").value;
-          var password = document.getElementById("typePasswordX").value;
+    .gradient-custom {
+      background: #6a11cb;
+      background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+      background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
     
-           if (name == "") {
-             alert("Name must be filled out");
-             return false;
-           }
+    .qr-code {
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+    }
     
-          if (email == "") {
-            alert("Email must be filled out");
-            return false;
-          }
+    .qr-code img {
+      width: 55px;
+      height: 55px;
+    }
     
-          // Email format validation
-          var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-          if (!email.match(emailRegex)) {
-            alert("Invalid email format");
-            return false;
-          }
-    
-          if (password == "") {
-            alert("Phone number must be filled out");
-            return false;
-          }
-    
-          // Password length validation
-        }
-      </script>
+  </style>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+ 
 </head>
-
-<body>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#"><img src="../static/images/logo.png" alt="Logo" height="100" width="90" style="margin-left: 30px;"></a>
-        <!-- <div style="margin-left:50%;  "> 
-          <form action="admin_new.html">
-            <button type="submit" class="button">Admin</button>
-          </form>
-        </div> -->
-        <a href="/">Home</a>
+<body class="gradient-custom">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#"><img src="../static/images/logo.png" alt="Logo" height="50" width="70" style="margin-left: 30px;"></a>
+    <!-- <div style="margin-left:50%;  "> 
+      <form action="admin_new.html">
+        <button type="submit" class="button">Admin</button>
+      </form>
+    </div> -->
+    <a href="/">Home</a>
   <a href="/about_us">About</a>
   <a href="/admin_login">Admin</a>
   <a href="/instructions">Instructions</a>
   <a href="/contact_us">Contact</a>
-      </nav>
-    <form action="/create_card"  onsubmit="return validateForm()" method="POST">
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+  </nav>
+  <div id="card" class="card">
+    <h3 style="font-family: sans-serif; font-weight: bold; " class="gradient-color">
+      One Card
+    </h3>
+    <img src="../static/images/logo.png" alt="Logo" class="logo">
+    <p id="formattedNumber" style="font-family: sans-serif; font-weight: bold; "></p>
+    <div class="qr-code">
+      <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+    </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    var card = document.getElementById('card');
+    html2canvas(card).then(function(canvas) {
+      var imageUrl = canvas.toDataURL();
+      applyGradientToImage(imageUrl);
+    });
+  });
 
-                            <div class="mb-md-5 mt-md-4 pb-5">
-
-                                <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
-                                <p class="text-white-50 mb-3">Please enter your details!</p>
-
-                                <div class="form-outline form-white mb-4">
-                                    <input type="text" name="name" id="typeNameX" class="form-control form-control-lg" placeholder="Name" />
-                                   
-                                </div>
-
-                                <div class="form-outline form-white mb-4">
-                                    <input type="email" name="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Email" />
-                                   
-                                </div>
-
-                                <div class="form-outline form-white mb-4">
-                                    <input name="phone" id="typePasswordX" type="tel"
-                                        class="form-control form-control-lg" placeholder="Phone number" />
-                                   
-                                </div>
-
-                            
-
-                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
-
-                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                    <a href="#!" class="text-white"><i
-                                            class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a href="#!" class="text-white"><i
-                                            class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                    <a href="#!" class="text-white"><i
-                                            class="fab fa-google fa-lg"></i></a>
-                                </div>
-
-                            </div>
-
-                            <div>
-                                <p class="mb-0">Don't have an account? <a href="#!"
-                                        class="text-white-50 fw-bold">Sign Up</a>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
-</form>
+  function applyGradientToImage(imageUrl) {
+    // Download the generated card image
+    var link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'card.png';
+    link.click();
+  }
+    var number = {{key}};
+    var numberString = number.toString();
+    var formattedNumber = numberString.replace(/(.{4})/g, '$1 ');
+    document.getElementById("formattedNumber").textContent = formattedNumber;
+  </script>
 </body>
-
 </html>
