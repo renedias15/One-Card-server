@@ -10,7 +10,7 @@
     .card {
       height: 220px;
       width: 440px;
-      background-image: url('../static/images/card_bg.jpg');
+      /*background-image: url('../static/images/card_bg.jpg');*/
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -21,65 +21,40 @@
       margin-right: auto;
       margin-top: 5%;
       font-family: Verdana;
-      position: relative; /* Add this property to allow absolute positioning within the card */
-      display: flex; /* Add this property to center the content vertically */
-      justify-content: center; /* Add this property to center the content horizontally */
-      align-items: center; /* Add this property to center the content vertically */
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #242424;
     }
     
     .card h3 {
-      margin-top: 0;
-      font-size: 25px;
-      font-family: 'Montserrat', sans-serif;
+      margin: 0;
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 5px;
+      left: 20px;
+      color: rgb(183, 0, 255);
+      font-size: 40px;
+      font-family: 'Montserrat', sans-serif;
+      z-index: 999;
       line-height: 1.8;
     }
     
-    .card img.logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      height: 50px;
-      width: 70px;
-    }
-    
     .card p {
-      margin-top: 7%;
+      margin: 0;
+      color: rgb(238, 255, 0);
       font-family: 'Montserrat', sans-serif;
       letter-spacing: 4px;
       line-height: 0.8;
       font-size: 25px;
-      text-align: center;
     }
 
-    
     .gradient-custom {
-      /* fallback for old browsers */
       background: #6a11cb;
-
-      /* Chrome 10-25, Safari 5.1-6 */
       background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
-
     }
-    .gradient-color{
-      /* fallback for old browsers */
-      background: #6a11cb;
-  
-      /* Chrome 10-25, Safari 5.1-6 */
-      background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-  
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-  
-      /* Apply gradient color to text */
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    
     .qr-code {
       position: absolute;
       bottom: 3px;
@@ -110,6 +85,10 @@
   <a href="/contact_us">Contact</a>
   </nav>
   <div id="card" class="card">
+    <h3 style="font-family: sans-serif; font-weight: bold; " class="gradient-color">
+      One Card
+    </h3>
+    <img src="../static/images/logo.png" alt="Logo" class="logo">
     <p id="formattedNumber" style="font-family: sans-serif; font-weight: bold; "></p>
     <div class="qr-code">
       <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
